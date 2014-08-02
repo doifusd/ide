@@ -1,25 +1,30 @@
+if filereadable("/etc/vim/vimrc.local")
+  source /etc/vim/vimrc.local
+endif
 "==============================================================================
 "自定义配置
 "==============================================================================
-syntax on						"语法高亮
+syntax enable 
 
-set noswapfile					"禁止产生swp文件
+syntax on						" 语法高亮
 
-set number						"显示行号         
+set noswapfile					" 禁止产生swp文件
 
-set nocompatible				"不是用vi键盘模式
+set number						" 显示行号         
 
-set cursorline					"突显当前行    
+set nocompatible				" 不是用vi键盘模式
 
-set ruler						"打开状态来标尺
+set cursorline					" 突显当前行    
 
-set shiftwidth=2				"设定<<和>>命令移动时的宽度为4   
+set ruler						" 打开状态来标尺
 
-set softtabstop=4				"按退格键时可以一次删掉4个空格    
+set shiftwidth=2				" 设定<<和>>命令移动时的宽度为4   
+
+set softtabstop=4				" 按退格键时可以一次删掉4个空格    
 
 set tabstop=4               	" 设定 tab 长度为 4
 
-set modeline					""自动载入模式行 
+set modeline					" 自动载入模式行 
 
 set nobackup                	" 覆盖文件时不备份
 
@@ -31,8 +36,6 @@ set backupcopy=yes          	" 设置备份时的行为为覆盖
 
 set ignorecase smartcase    	" 搜索时忽略大小写,但在有一个或以上大写字母时仍保持对大小写敏感
 
-"set nowrapscan             	" 禁止在搜索到文件两端时重新搜索
-
 set wrap						" 自动折行
 
 set incsearch               	" 输入搜索内容时就显示搜索结果
@@ -43,19 +46,11 @@ set noerrorbells            	" 关闭错误信息响铃
 
 set novisualbell            	" 关闭使用可视响铃代替呼叫
 
-"set t_vb=                  	" 置空错误铃声的终端代码
-
 set showmatch               	" 插入括号时，短暂地跳转到匹配的对应括号
-
-" set matchtime=2           	" 短暂跳转到匹配括号的时间
 
 set magic                   	" 设置魔术
 
 set hidden                  	" 允许在有未保存的修改时切换缓冲区,此时的修改由vim负责保存
-
-"set guioptions-=T          	" 隐藏工具栏
-
-"set guioptions-=m           	" 隐藏菜单栏
 
 set smartindent             	" 开启新行时使用智能自动缩进
 
@@ -67,7 +62,7 @@ set laststatus=2            	" 显示状态栏 (默认值为 1, 无法显示状�
 
 set statusline=\ %<%F[%1*%M%*%n%R%H]%=\ %y\ %0(%{&fileformat}\ %{&encoding}\ %c:%l/%L%)\		" 设置在状态行显示的信息
 
-filetype plugin on				"开启插件
+filetype plugin on				" 开启插件
 
 filetype plugin indent on
 
@@ -79,28 +74,33 @@ set foldcolumn=0            	" 设置折叠区域的宽度
 
 setlocal foldlevel=1        	" 设置折叠层数为
 
-"set mouse=a					"鼠标动作
+set list						" 显示tab和空格 
+
+set lcs=tab:\|\ ,nbsp:%,trail:-	" 设置tab和空格样式
+
+highlight LeaderTab guifg=#666666	
+"设定行首tab为灰色
+match LeaderTab /^\t/			" 匹配行首tab
+
 set cc=80 
-set cursorline 					"光标行高亮
+set cursorline 					" 光标行高亮
 "红底篮字无下划线gui属性无设置                           
-autocmd InsertEnter * highlight  CursorLine cterm=NONE  ctermbg=Red ctermfg=Green guibg=None guifg=None
+autocmd InsertEnter * highlight  CursorLine cterm=NONE  ctermbg=Black ctermfg=White guibg=None guifg=None
 set cursorcolumn            	"光标列高亮
-autocmd InsertEnter * highlight CursorColumn  cterm=NONE ctermbg=Red  ctermfg=Green guibg=None guifg=None
+autocmd InsertEnter * highlight CursorColumn  cterm=NONE ctermbg=Black  ctermfg=White guibg=None guifg=None
 "改变窗口大小
 "纵向改变
 "map <F4> <C-W>+
 "map <F5> <C-W>-
 "横向改变
-map <F4> <ESC> <C-W>>
-map <F5> <ESC> <C-W><
-" set foldclose=all         	" 设置为自动关闭折叠                            
-" nnoremap <space> @=((foldclosed(line('.')) < 0) ? 'zc' : 'zo')<CR>
+map <F7> <ESC> <C-W>>
+map <F8> <ESC> <C-W><
 "------------------------------------------------------------------------------ 
 "模板
 "molokai,desertEx,desert,jellybeans
 colorscheme molokai
 set t_Co=256
-set background=dark
+"set background=dark
 "------------------------------------------------------------------------------
 " 用空格键来开关折叠
 " return OS type, eg: windows, or linux, mac, et.st..
@@ -127,12 +127,6 @@ set encoding=utf-8
 set termencoding=utf-8
 set formatoptions+=mM
 set fencs=utf-8,usc-bom,euc-jp,gb18030,gbk,gb2312,cp936
-"Buffers操作快捷方式!
-"一些不错的映射转换语法（如果在一个文件中混合了不同语言时有用）
-nnoremap <leader>1 :set filetype=xhtml<CR>
-nnoremap <leader>2 :set filetype=css<CR>
-nnoremap <leader>3 :set filetype=javascript<CR>
-nnoremap <leader>4 :set filetype=php<CR>
 "------------------------------------------------------------------------------
 " 让 Tohtml 产生有 CSS 语法的 html
 " syntax/2html.vim，可以用:runtime! syntax/2html.vim
@@ -147,20 +141,33 @@ let javascript_enable_domhtmlcss=1
 "autocmd filetype javascript set dictionary=$VIMFILES/dict/javascript.dict
 "autocmd filetype css set dictionary=$VIMFILES/dict/css.dict
 "autocmd filetype php set dictionary=$VIMFILES/dict/php.dict
-
+"autocmd filetype php set dictionary=~/.vim/dict/php.dict
+"au BufRead,BufNewFile *.txt setlocal ft=txt
+"au BufRead,BufNewFile *.tpl setlocal ft=smarty      " 支持 Smarty
+"au BufRead,BufNewFile *.as setlocal ft=actionscript " 支持 ActionScript
+"au BufRead,BufNewFile *.js set ft=javascript syntax=jquery
+"au BufRead,BufNewFile jquery.*.js set ft=javascript syntax=jquery
+"autocmd BufRead *.as set filetype=actionscript
+"autocmd BufRead *.js set filetype=javascript
+"autocmd BufRead,BufNewFile *.txtfmt set filetype=txtfmt
+"autocmd BufRead,BufNewFile *.txt set filetype=txtfmt
+"autocmd BufRead,BufNewFile *.mxml set filetype=mxml
+"autocmd BufRead,BufNewFile *.bash set filetype=bash
+"autocmd BufRead,BufNewFile *.php set filetype=php
+"autocmd BufRead,BufNewFile *.c set filetype=c
 " Python 文件的一般设置，比如不要 tab 等
-autocmd FileType python set tabstop=4 shi"=====================================
-autocmd FileType python map :!python %
+"autocmd FileType python set tabstop=4 shi"=====================================
+"autocmd FileType python map :!python %
 
 "------------------------------------------------------------------------------
 "taglist插件
 if MySys() == "windows"                " 设定windows系统中ctags程序的位置
     "let Tlist_Ctags_Cmd = '"'.$VIMRUNTIME.'/ctags.exe"'
-elseif MySys() == "linux"              " 设定windows系统中ctags程序的位置
+  elseif MySys() == "linux"              " 设定windows系统中ctags程序的位置
     let Tlist_Ctags_Cmd = '/usr/bin/ctags'
 endif
 
-nnoremap <silent><F4> :TlistToggle<CR>
+nnoremap <silent><F2> :TlistToggle<CR>
 let Tlist_Show_One_File = 1            " 不同时显示多个文件的tag，只显示当前文件的
 let Tlist_Exit_OnlyWindow = 1          " 如果taglist窗口是最后一个窗口，则退出vim
 let Tlist_Use_Right_Window = 1         " 在右侧窗口中显示taglist窗口
@@ -199,28 +206,39 @@ let NERDCompactSexyComs=1   " 多行注释时样子更好看
 map <F3> :NERDTreeToggle<CR>
 map <F3> <ESC>:NERDTreeToggle<CR> 
 "------------------------------------------------------------------------------
-""对齐插件
-let g:indent_guides_guide_size=1
+""对齐插件??????????
+"let g:indent_guides_guide_size=1
 "let g:indent_guides_auto_colors = 0
-autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=lightgrey   ctermbg=3
-autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=white  ctermbg=4 
+"autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd   ctermbg=black
+"autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=darkgrey
 "------------------------------------------------------------------------------
 " plugin - DoxygenToolkit.vim  由注释生成文档，并且能够快速生成函数标准注释
 " ,DoxAuthor:将文件名，作者，时间等,DoxLic:  license注释,Dox：函数及类注释
-let g:DoxygenToolkit_authorName="doifusd"
-let g:DoxygenToolkit_briefTag_funcName="yes"
-map <leader>a :DoxAuthor<CR>					
-map <leader>f :Dox<CR>
-map <leader>b :DoxBlock<CR>
-map <leader>c O/*  */<LEFT><LEFT><LEFT>
-let g:DoxygenToolkit_briefTag_pre="@Synopsis  " 
-let g:DoxygenToolkit_paramTag_pre="@Param " 
-let g:DoxygenToolkit_returnTag="@Returns   " 
-"let g:DoxygenToolkit_blockHeader="------------------------------" 
-"let g:DoxygenToolkit_blockFooter="------------------------------" 
-let g:DoxygenToolkit_authorName="doifusd" 
-let g:DoxygenToolkit_licenseTag="My own license"
+"let g:DoxygenToolkit_authorName="doifusd"
+"let g:DoxygenToolkit_briefTag_funcName="yes"
+"map <leader>a :DoxAuthor<CR>					
+"map <leader>f :Dox<CR>
+"map <leader>b :DoxBlock<CR>
+"map <leader>c O/*  */<LEFT><LEFT><LEFT>
+"let g:DoxygenToolkit_briefTag_pre="@Synopsis  " 
+"let g:DoxygenToolkit_paramTag_pre="@Param " 
+"let g:DoxygenToolkit_returnTag="@Returns   " 
+""let g:DoxygenToolkit_blockHeader="------------------------------" 
+""let g:DoxygenToolkit_blockFooter="------------------------------" 
+"let g:DoxygenToolkit_authorName="doifusd" 
+"let g:DoxygenToolkit_licenseTag="My own license"
 
+"php注释文档(phpDocumentor)
+function MyCopy()
+    call setline(line("."),"/**")
+    call append(line(".")+1," * @filename ".expand("%"))
+    call append(line(".")+2," * @touch date ".strftime("%c"))
+    call append(line(".")+3," * @author doifusd<doifusdsky@gmail.com>")
+    call append(line(".")+4," * @license http://www.zend.com/license/3_0.txt PHP License 3.0")
+    call append(line(".")+5," * @version 1.0.0 ")
+    call append(line(".")+6,"*/")
+endf
+map <F12> <Esc>:call MyCopy()<CR><Esc>5j$a
 "------------------------------------------------------------------------------
 " plugin – ZenCoding.vim 很酷的插件，HTML代码生成
 " 插件最新版：http://github.com/mattn/zencoding-vim
@@ -237,28 +255,31 @@ nmap <silent> <leader>js :call g:Jsbeautify()<cr>
 let g:checksyntax_auto = 0	"自动检查
 "------------------------------------------------------------------------------
 " plugin - NeoComplCache.vim    自动补全插件
-let g:neocomplcache_enable_at_startup = 1 
-"let g:AutoComplPop_NotEnableAtStartup = 1
+"let g:neocomplcache_enable_at_startup = 1 
+""let g:AutoComplPop_NotEnableAtStartup = 1
 "let g:NeoComplCache_EnableAtStartup = 1
-let g:NeoComplCache_SmartCase = 1
-let g:NeoComplCache_TagsAutoUpdate = 1
-let g:NeoComplCache_EnableInfo = 1
-let g:NeoComplCache_EnableCamelCaseCompletion = 1
-let g:NeoComplCache_MinSyntaxLength = 3
-let g:NeoComplCache_EnableSkipCompletion = 1
-let g:NeoComplCache_SkipInputTime = '0.5'
-let g:NeoComplCache_SnippetsDir = $VIMFILES.'/snippets'
+"let g:NeoComplCache_SmartCase = 1
+"let g:NeoComplCache_TagsAutoUpdate = 1
+"let g:NeoComplCache_EnableInfo = 1
+"let g:NeoComplCache_EnableCamelCaseCompletion = 1
+"let g:NeoComplCache_MinSyntaxLength = 3
+"let g:NeoComplCache_EnableSkipCompletion = 1
+"let g:NeoComplCache_SkipInputTime = '0.5'
+"let g:NeoComplCache_SnippetsDir = $VIMFILES.'/snippets'
 
-" Enable omni completion. 
-autocmd FileType php set omnifunc=phpcomplete#CompletePHP
-autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS 
-autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags 
-autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS 
+" Enable omni completion.
+"autocmd FileType php set omnifunc=phpcomplete#CompletePHP
+"autocmd FileType css set omnifunc=csscomplete#CompleteCSS 
+"autocmd FileType html set omnifunc=htmlcomplete#CompleteTags 
+"autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
 "autocmd FileType python setlocal omnifunc=pythoncomplete#Complete 
-autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags 
+"autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags 
 "set history=4000
 "php文件自动执行标准文档
-au BufRead *.php set ai et nu sw=4 ts=4 tw=79 
+"au BufRead *.php set ai et nu sw=4 ts=4 tw=79 
+"另一个自动不全插件supertab
+"let g:SuperTabDefaultCompletionType = "<c-n>"
+"let g:SuperTabContextDefaultCompletionType = "<c-n>"
 "------------------------------------------------------------------------------
 " plugin - html5配置
 "禁用事件处理程序属性的支持：
@@ -288,11 +309,39 @@ au BufRead *.php set ai et nu sw=4 ts=4 tw=79
 " plugin - vim-css3 高亮 css3 中的属性
 "------------------------------------------------------------------------------
 "php语法检查
-map <C-J> :!clear && php -l %<CR>
+map <F4> <C-J> :!clear && php -l %<CR>
 "执行php
-nmap <F6> <ESC>:!clear && php -q <C-R>%<cr>
+nmap <F5> <ESC>:!clear && php -q <C-R>%<cr>
 "------------------------------------------------------------------------------
 ":% s/^/\/\//g     在全部内容的行首添加//号注释
 ":2,50 s/^/\/\//g  在2~50行首添加//号注释
 ":2,50 s/^\/\///g  在2~50行首删除//号
-
+"------------------------------------------------------------------------------
+"自动插入和格式化方括号和圆括号
+let g:AutoPairsFlyMode = 1
+"------------------------------------------------------------------------------
+set nocompatible              " be iMproved, required
+filetype off                  " required
+"a set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+Bundle 'gmarik/vundle'
+Bundle	'tpope/vim-fugitive'
+Bundle 'Lokaltog/vim-easymotion'
+Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
+Bundle 'tpope/vim-rails.git'
+Bundle 'L9'
+Bundle 'FuzzyFinder'
+Bundle 'git://git.wincent.com/command-t.git'
+filetype plugin indent on    " required
+" To ignore plugin indent changes, instead use:
+" "filetype plugin on
+" " Brief help
+" " :PluginList       - lists configured plugins
+" " :PluginInstall    - installs plugins; append `!` to update or just
+" :PluginUpdate
+" " :PluginSearch foo - searches for foo; append `!` to refresh local cache
+" " :PluginClean      - confirms removal of unused plugins; append `!` to
+" auto-approve removal
+" " see :h vundle for more details or wiki for FAQ
+" " Put your non-Plugin stuff after this line
