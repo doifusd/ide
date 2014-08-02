@@ -322,7 +322,7 @@ let g:AutoPairsFlyMode = 1
 "------------------------------------------------------------------------------
 set nocompatible              " be iMproved, required
 filetype off                  " required
-"a set the runtime path to include Vundle and initialize
+" set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 Bundle 'gmarik/vundle'
@@ -335,13 +335,13 @@ Bundle 'FuzzyFinder'
 Bundle 'git://git.wincent.com/command-t.git'
 filetype plugin indent on    " required
 " To ignore plugin indent changes, instead use:
-" "filetype plugin on
-" " Brief help
-" " :PluginList       - lists configured plugins
-" " :PluginInstall    - installs plugins; append `!` to update or just
+" filetype plugin on
+"  Brief help
+" :PluginList       - lists configured plugins
+" :PluginInstall    - installs plugins; append `!` to update or just
 " :PluginUpdate
-" " :PluginSearch foo - searches for foo; append `!` to refresh local cache
-" " :PluginClean      - confirms removal of unused plugins; append `!` to
+" :PluginSearch foo - searches for foo; append `!` to refresh local cache
+" :PluginClean      - confirms removal of unused plugins; append `!` to
 " auto-approve removal
-" " see :h vundle for more details or wiki for FAQ
-" " Put your non-Plugin stuff after this line
+" see :h vundle for more details or wiki for FAQ
+" Put your non-Plugin stuff after this line
