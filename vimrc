@@ -6,37 +6,37 @@ endif
 "==============================================================================
 syntax enable 
 
-syntax on						" 语法高亮
+syntax on						        " 语法高亮
 
-set noswapfile					" 禁止产生swp文件
+set noswapfile			        " 禁止产生swp文件
 
-set number						" 显示行号         
+set number						      " 显示行号         
 
-set nocompatible				" 不是用vi键盘模式
+set nocompatible				    " 不是用vi键盘模式,关闭兼容模式
 
-set cursorline					" 突显当前行    
+set cursorline					    " 突显当前行    
 
-set ruler						" 打开状态来标尺
+set ruler						        " 打开状态来标尺
 
-set shiftwidth=2				" 设定<<和>>命令移动时的宽度为4   
+set shiftwidth=2				    " 设定<<和>>命令移动时的宽度为4   
 
-set softtabstop=4				" 按退格键时可以一次删掉4个空格    
+set softtabstop=4				    " 按退格键时可以一次删掉4个空格    
 
-set tabstop=4               	" 设定 tab 长度为 4
+set tabstop=4               " 设定 tab 长度为 4
 
-set modeline					" 自动载入模式行 
+set modeline					      " 自动载入模式行 
 
 set nobackup                	" 覆盖文件时不备份
 
 set autochdir               	" 自动切换当前目录为当前文件所在的目录
 
-filetype plugin on				" 开启插件
+filetype plugin on				    " 开启插件
 
 set backupcopy=yes          	" 设置备份时的行为为覆盖
 
 set ignorecase smartcase    	" 搜索时忽略大小写,但在有一个或以上大写字母时仍保持对大小写敏感
 
-set wrap						" 自动折行
+set wrap						          " 自动折行
 
 set incsearch               	" 输入搜索内容时就显示搜索结果
 
@@ -60,9 +60,8 @@ set cmdheight=1             	" 设定命令行的行数为 1
 
 set laststatus=2            	" 显示状态栏 (默认值为 1, 无法显示状态栏)
 
-set statusline=\ %<%F[%1*%M%*%n%R%H]%=\ %y\ %0(%{&fileformat}\ %{&encoding}\ %c:%l/%L%)\		" 设置在状态行显示的信息
-
-filetype plugin on				" 开启插件
+set statusline=\ %<%F[%1*%M%*%n%R%H]%=\ %y\ %0(%{&fileformat}\ %{&encoding}\ %c:%l/%L%)\		
+                              " 设置在状态行显示的信息
 
 filetype plugin indent on
 
@@ -74,29 +73,29 @@ set foldcolumn=0            	" 设置折叠区域的宽度
 
 setlocal foldlevel=1        	" 设置折叠层数为
 
-set list						" 显示tab和空格 
+set list						          " 显示tab和空格 
 
 set lcs=tab:\|\ ,nbsp:%,trail:-	" 设置tab和空格样式
 
 highlight LeaderTab guifg=#666666	
-"设定行首tab为灰色
-match LeaderTab /^\t/			" 匹配行首tab
+                              "设定行首tab为灰色
+match LeaderTab /^\t/			    " 匹配行首tab
 
 set cc=80 
-set cursorline 					" 光标行高亮
+set cursorline 					      " 光标行高亮
 "红底篮字无下划线gui属性无设置                           
 autocmd InsertEnter * highlight  CursorLine cterm=NONE  ctermbg=Black ctermfg=White guibg=None guifg=None
 set cursorcolumn            	"光标列高亮
 autocmd InsertEnter * highlight CursorColumn  cterm=NONE ctermbg=Black  ctermfg=White guibg=None guifg=None
-"改变窗口大小
-"纵向改变
+                              "改变窗口大小
+                              "纵向改变
 "map <F4> <C-W>+
 "map <F5> <C-W>-
-"横向改变
+                              "横向改变
 map <F7> <ESC> <C-W>>
 map <F8> <ESC> <C-W><
 "------------------------------------------------------------------------------ 
-"模板
+                              "模板
 "molokai,desertEx,desert,jellybeans
 colorscheme molokai
 set t_Co=256
