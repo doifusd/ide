@@ -6,31 +6,41 @@ endif
 "==============================================================================
 syntax enable 
 
-syntax on						        " 语法高亮
+syntax on						          " 语法高亮
 
-set noswapfile			        " 禁止产生swp文件
+set noswapfile			          " 禁止产生swp文件
 
-set number						      " 显示行号         
+set number						        " 显示行号         
 
-set nocompatible				    " 不是用vi键盘模式,关闭兼容模式
+set nocompatible				      " 不是用vi键盘模式,关闭兼容模式
 
-set cursorline					    " 突显当前行    
+set cursorline					      " 突显当前行    
 
-set ruler						        " 打开状态来标尺
+set ruler						          " 打开状态来标尺
 
-set shiftwidth=2				    " 设定<<和>>命令移动时的宽度为4   
+set expandtab smarttab        " 将 <TAB> 符号转变为 <SPACE>，也就是空格
 
-set softtabstop=4				    " 按退格键时可以一次删掉4个空格    
+set softtabstop=4	shiftwidth=4	tabstop=4		      
+" 按退格键时可以一次删掉4个空格 设定<<和>>命令移动时的宽度为4  设定tab长度为4   
 
-set tabstop=4               " 设定 tab 长度为 4
+set autoindent smartindent shiftround  " 开启新行时使用智能自动缩进
 
-set modeline					      " 自动载入模式行 
+set modeline					        " 自动载入模式行 
 
 set nobackup                	" 覆盖文件时不备份
 
 set autochdir               	" 自动切换当前目录为当前文件所在的目录
 
-filetype plugin on				    " 开启插件
+filetype on
+
+"filetype plugin on				    " 开启插件
+filetype indent on            " 缩进规则
+
+set showcmd                   " 显示命令
+
+set showmode                  " 显示模式
+
+set scrolloff=3               " 保留显示的行数
 
 set backupcopy=yes          	" 设置备份时的行为为覆盖
 
@@ -48,11 +58,13 @@ set novisualbell            	" 关闭使用可视响铃代替呼叫
 
 set showmatch               	" 插入括号时，短暂地跳转到匹配的对应括号
 
+set matchtime=1               " 1/10秒
+
 set magic                   	" 设置魔术
 
 set hidden                  	" 允许在有未保存的修改时切换缓冲区,此时的修改由vim负责保存
 
-set smartindent             	" 开启新行时使用智能自动缩进
+
 
 set backspace=indent,eol,start	" 不设定在插入状态无法用退格键和 Delete 键删除回车符
 
@@ -62,8 +74,6 @@ set laststatus=2            	" 显示状态栏 (默认值为 1, 无法显示状�
 
 set statusline=\ %<%F[%1*%M%*%n%R%H]%=\ %y\ %0(%{&fileformat}\ %{&encoding}\ %c:%l/%L%)\		
                               " 设置在状态行显示的信息
-
-filetype plugin indent on
 
 set foldenable              	" 开始折叠
 
